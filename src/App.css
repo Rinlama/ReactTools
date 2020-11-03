@@ -1,38 +1,70 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff;
+  --mute: #767676;
+  --cover: #f8f9fa;
+}
+
+.header {
+  border-bottom: 1px solid #ccc;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: var(--white);
+}
+.sign-in-main {
+  background-color: var(--cover);
+  margin-top: 49px;
+  padding: 50px 0 50px 0;
+}
+.sign-in-container {
+  padding: 15px;
+  width: 500px;
+  background-color: var(--white);
+}
+.sign-in-header {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sign-in-intro {
+  font-size: 14px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.footer {
+  border-top: 1px solid #ccc;
+  width: 100%;
+  padding: 50px 0 50px 0;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.footer-container {
+  padding: 30px 0 30px 0;
+}
+.footer-item {
+  padding: 10px;
+}
+.footer-header {
+  font-size: 14px;
+  font-weight: 550;
+}
+.footer-ul {
+  list-style: none;
+}
+.footer-li {
+  font-size: 14px;
+  color: var(--mute);
+}
+.footer-store {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-store-logo {
+  padding: 10px;
+  width: 220px;
 }
