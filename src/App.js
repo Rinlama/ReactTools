@@ -1,26 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Restaurant from "./components/Restaurant";
+import { connect } from "react-redux";
+import { restaurantActionType } from "./redux/actions/RestaurantAction";
 
-function App() {
+function App(props) {
+  const { restaurantList, remove } = props;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Restaurant />
+
+      {/* Store state */}
+      <ul class="list-group my-3">
+        {restaurantList.map((d, index) => (
+          <li className="list-group-item d-flex justify-content-between">
+            <span>
+              {d.name}-{d.location}
+            </span>
+            <span>
+              <button
+                className="btn btn-danger"
+                onClick={(event) => {
+                  remove(index);
+                }}
+              >
+                Delete
+              </button>
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    restaurantList: state,
+  };
+};
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    remove: (index) => {
+      dispatch({
+        type: restaurantActionType.DELETE,
+        payload: index,
+      });
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
