@@ -39,7 +39,7 @@ function App(props) {
 
 const mapStateToProps = (state) => {
   return {
-    restaurantList: state,
+    restaurantList: state.restaurant,
   };
 };
 

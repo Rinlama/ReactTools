@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { addFoodBazzarAction } from "../redux/FoodBazzarAction";
 import { addRestaurantAction } from "../redux/RestaurantAction";
 
 function Restaurant(props) {
-  const { restaurantList, add } = props;
+  const { restaurantList, addRestaurant, addFoodBazzar } = props;
 
   const [restaurantState, setRestaurantState] = useState({});
 
   return (
     <div>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          add(restaurantState);
-        }}
-      >
+      <form>
         <div className="form-group">
           <label>Name</label>
           <input
@@ -41,8 +37,25 @@ function Restaurant(props) {
             }}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Save
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={(event) => {
+            event.preventDefault();
+            addRestaurant(restaurantState);
+          }}
+        >
+          Save Restaurant
+        </button>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={(event) => {
+            event.preventDefault();
+            addFoodBazzar(restaurantState);
+          }}
+        >
+          Save FoodBazzar
         </button>
       </form>
     </div>
@@ -51,14 +64,18 @@ function Restaurant(props) {
 
 const mapStateToProps = (state) => {
   return {
-    restaurantList: state,
+    restaurantList: state.restaurant,
+    foodBazzarList: state.foodBazzar,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    add: (res) => {
+    addRestaurant: (res) => {
       dispatch(addRestaurantAction(res));
+    },
+    addFoodBazzar: (res) => {
+      dispatch(addFoodBazzarAction(res));
     },
   };
 };

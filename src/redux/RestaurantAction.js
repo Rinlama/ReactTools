@@ -1,6 +1,6 @@
 const restaurantActionType = {
-  ADD: "ADD",
-  DELETE: "DELETE",
+  ADD: "ADD_Restaurant",
+  DELETE: "DELETE_Restaurant",
 };
 
 const addRestaurantAction = (res) => {
